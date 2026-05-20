@@ -1,19 +1,43 @@
+# codecov.yaml – Configuration for Codecov coverage reporting
+
+# Top-level Codecov settings
 codecov:
+  # Require all CI checks to pass before reporting
   require_ci_to_pass: true
+  # Notification settings
   notify:
+    # Wait until 2 builds have finished before sending notifications
     after_n_builds: 2
+    # Wait for CI to complete before notifying
     wait_for_ci: yes
+
+# Comment settings for pull request comments
 comment:
+  # Use default comment behavior (update existing comment)
   behavior: default
+  # Layout of the comment: reach, diff, flags, tree, reach (ordered)
   layout: reach,diff,flags,tree,reach
+  # Do not show carryforward flags (carried over from previous runs)
   show_carryforward_flags: false
+  # Only post a comment if coverage changes
   require_changes: true
+
+# Coverage report settings
 coverage:
+  # Status check settings
   status:
+    # Treat changes as part of status checks
     changes: true
+    # Default rules for all status checks
     default_rules:
+      # Include flag coverage even if not uploaded
       flag_coverage_not_uploaded_behavior: include
+    # Enable patch-level status check (coverage for changed lines)
     patch: true
+    # Enable project-level status check (overall coverage)
     project: true
+
+# GitHub Checks integration
 github_checks:
+  # Enable annotations in GitHub pull requests (line-by-line coverage notes)
   annotations: true
